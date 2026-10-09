@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <radialGradient id="vc" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#f2e5cd"/>
+      <stop offset="1" stop-color="#c9b08a"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#vc)"/>
+  <rect x="14" y="14" width="612" height="372" fill="none" stroke="#b08d57" stroke-width="1.5"/>
+  <path d="M270 268 L270 170 Q320 110 370 170 L370 268 Z" fill="none" stroke="#8a6a3a" stroke-width="2"/>
+  <path d="M320 150 L320 118 M306 132 L334 132" stroke="#8a6a3a" stroke-width="2"/>
+  <rect x="296" y="212" width="48" height="56" fill="none" stroke="#8a6a3a" stroke-width="1.5"/>
+  <text x="320" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="22" letter-spacing="8" fill="#8a6a3a">CHURCH PHOTO</text>
+  <text x="320" y="362" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="5" fill="#b08d57">PLACEHOLDER</text>
+</svg>

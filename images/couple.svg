@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 620" width="480" height="620">
+  <defs>
+    <radialGradient id="cp" cx="50%" cy="36%" r="68%">
+      <stop offset="0" stop-color="#f6e7d2"/>
+      <stop offset="1" stop-color="#cda87f"/>
+    </radialGradient>
+    <linearGradient id="blush" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4e0d2"/>
+      <stop offset="1" stop-color="#e4c4b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="620" fill="url(#blush)"/>
+  <path d="M40 580 L40 220 Q40 40 240 40 Q440 40 440 220 L440 580 Z" fill="url(#cp)"/>
+  <path d="M40 580 L40 220 Q40 40 240 40 Q440 40 440 220 L440 580 Z" fill="none" stroke="#b08d57" stroke-width="2"/>
+  <path d="M56 580 L56 222 Q56 58 240 58 Q424 58 424 222 L424 580 Z" fill="none" stroke="#b08d57" stroke-width="1" opacity="0.55"/>
+  <circle cx="240" cy="270" r="78" fill="none" stroke="#b08d57" stroke-width="1.2" opacity="0.85"/>
+  <path d="M240 236 L245 264 L273 270 L245 276 L240 304 L235 276 L207 270 L235 264 Z" fill="#b08d57" opacity="0.7"/>
+  <text x="240" y="440" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="9" fill="#8a6a3a">COUPLE PHOTO</text>
+  <text x="240" y="478" text-anchor="middle" font-family="Georgia, serif" font-size="14" letter-spacing="5" fill="#b08d57">PLACEHOLDER</text>
+</svg>

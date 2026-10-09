@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" width="480" height="600">
+  <defs>
+    <radialGradient id="gl2" cx="50%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#f3e6d4"/>
+      <stop offset="1" stop-color="#cbb08a"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="600" fill="url(#gl2)"/>
+  <rect x="18" y="18" width="444" height="564" fill="none" stroke="#b08d57" stroke-width="1.5"/>
+  <rect x="28" y="28" width="424" height="544" fill="none" stroke="#b08d57" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="240" cy="252" r="86" fill="none" stroke="#b08d57" stroke-width="1.2" opacity="0.8"/>
+  <path d="M240 214 L246 246 L278 252 L246 258 L240 290 L234 258 L202 252 L234 246 Z" fill="#b08d57" opacity="0.7"/>
+  <text x="240" y="416" text-anchor="middle" font-family="Georgia, serif" font-size="26" letter-spacing="10" fill="#8a6a3a">PHOTO 02</text>
+  <text x="240" y="456" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="6" fill="#b08d57">PLACEHOLDER</text>
+</svg>
