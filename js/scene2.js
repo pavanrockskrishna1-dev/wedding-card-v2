@@ -102,6 +102,7 @@
         { opacity: 1, textShadow: "0 0 0px rgba(212,175,110,0)", duration: 1.7 }, 1.5);
     } else {
       /* English script: clip reveal + travelling glow (writes itself) */
+      tl.set(groom, { opacity: 1 }, 1.5);
       tl.fromTo(groom.querySelector(".s2-name-inner"),
         { clipPath: "inset(0 100% 0 0)", webkitClipPath: "inset(0 100% 0 0)" },
         { clipPath: "inset(0 -5% 0 0)", webkitClipPath: "inset(0 -5% 0 0)", duration: 1.8, ease: "power1.inOut" }, 1.5);
@@ -119,6 +120,7 @@
         { opacity: 0, textShadow: "0 0 18px rgba(212,175,110,0.95)" },
         { opacity: 1, textShadow: "0 0 0px rgba(212,175,110,0)", duration: 1.7 }, 4.1);
     } else {
+      tl.set(bride, { opacity: 1 }, 4.1);
       tl.fromTo(bride.querySelector(".s2-name-inner"),
         { clipPath: "inset(0 100% 0 0)", webkitClipPath: "inset(0 100% 0 0)" },
         { clipPath: "inset(0 -5% 0 0)", webkitClipPath: "inset(0 -5% 0 0)", duration: 1.8, ease: "power1.inOut" }, 4.1);
@@ -139,8 +141,9 @@
 
     /* one foil shimmer sweep across the names */
     tl.fromTo(root.querySelector(".s2-shimmer"),
-      { xPercent: -130 },
+      { xPercent: -130, opacity: 1 },
       { xPercent: 130, duration: 1.7, ease: "power1.inOut" }, 5.3);
+    tl.set(root.querySelector(".s2-shimmer"), { opacity: 0 }, 7.0);
 
     /* a few gold sparkles drift */
     Array.prototype.forEach.call(root.querySelectorAll(".s2-spark"), function (el, i) {
