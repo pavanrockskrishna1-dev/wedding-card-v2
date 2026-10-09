@@ -7,11 +7,11 @@ window.CONFIG = {
 
   meta: {
     pageTitle: {
-      en: "Ashish & Easter — Wedding Invitation",
-      te: "ఆశీష్ & ఈస్టర్ — వివాహ ఆహ్వానం"
+      en: "Ashish & Sulochana — Wedding Invitation",
+      te: "ఆశీష్ & సులోచన — వివాహ ఆహ్వానం"
     },
-    monogram: "A & E",
-    monogramSeal: "A&E"
+    monogram: "A & S",
+    monogramSeal: "A&S"
   },
 
   /* Exactly two languages */
@@ -23,15 +23,15 @@ window.CONFIG = {
   names: {
     en: {
       groomFull: "Ashish Kamada",
-      brideFull: "Easter Rani",
+      brideFull: "Sulochana Rani",
       groomShort: "Ashish",
-      brideShort: "Easter"
+      brideShort: "Sulochana"
     },
     te: {
       groomFull: "ఆశీష్ కమాడ",
-      brideFull: "ఈస్టర్ రాణి",
+      brideFull: "సులోచన రాణి",
       groomShort: "ఆశీష్",
-      brideShort: "ఈస్టర్"
+      brideShort: "సులోచన"
     }
   },
 
@@ -42,64 +42,64 @@ window.CONFIG = {
   },
 
   date: {
-    iso: "2026-12-12T10:30:00+05:30",
+    iso: "2026-11-19T10:00:00+05:30",
     line: {
-      en: "Saturday · 12 December 2026",
-      te: "శనివారం · 12 డిసెంబర్ 2026"
+      en: "Thursday · 19 November 2026",
+      te: "గురువారం · 19 నవంబర్ 2026"
     }
   },
 
   church: {
     name: {
-      en: "St. Alphonsa Church",
-      te: "సెంట్ అల్ఫోన్సా చర్చి"
+      en: "Saint Pauls Lutheran Church",
+      te: "సెయింట్ పాల్స్ లూథరన్ చర్చి"
     },
     address: {
-      en: "Church Road, Kothur Village",
-      te: "చర్చి రోడ్, కోతూరు గ్రామం"
+      en: "Christian Peta, Kovvur, East Godavari Dist.",
+      te: "క్రిస్టియన్ పేట, కొవ్వూరు, తూర్పు గోదావరి జిల్లా"
     },
     time: {
-      en: "10:30 AM",
-      te: "ఉదయం 10:30"
+      en: "10:00 AM",
+      te: "ఉదయం 10:00"
     },
-    mapsUrl: "https://maps.google.com/?q=church",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Saint+Pauls+Lutheran+Church+Christian+Peta+Kovvur",
     photo: "images/venue-church.svg"
   },
 
   reception: {
     name: {
-      en: "Grand Celebration Hall",
-      te: "గ్రాండ్ సెలబ్రేషన్ హాల్"
+      en: "Lunch at the Venue",
+      te: "వివాహ వేదిక వద్ద విందు భోజనం"
     },
     address: {
-      en: "Main Road, Kothur Village",
-      te: "మెయిన్ రోడ్, కోతూరు గ్రామం"
+      en: "Saint Pauls Lutheran Church, Christian Peta, Kovvur",
+      te: "సెయింట్ పాల్స్ లూథరన్ చర్చి, క్రిస్టియన్ పేట, కొవ్వూరు"
     },
     time: {
-      en: "6:00 PM",
-      te: "సాయంత్రం 6:00"
+      en: "From 12:00 PM onwards",
+      te: "మధ్యాహ్నం 12:00 నుండి"
     },
-    mapsUrl: "https://maps.google.com/?q=reception+hall",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Saint+Pauls+Lutheran+Church+Christian+Peta+Kovvur",
     photo: "images/venue-reception.svg"
   },
 
   photos: [
     {
-      src: "images/photo-1.svg",
+      src: "images/photo-1.jpg",
       caption: {
         en: "Where it all began",
         te: "అంతా మొదలైన చోటు"
       }
     },
     {
-      src: "images/photo-2.svg",
+      src: "images/photo-2.jpg",
       caption: {
         en: "The promise of a lifetime",
         te: "జీవితకాలపు మాట"
       }
     },
     {
-      src: "images/photo-3.svg",
+      src: "images/photo-3.jpg",
       caption: {
         en: "Together, always",
         te: "ఎల్లప్పుడూ కలిసి"
@@ -107,7 +107,7 @@ window.CONFIG = {
     }
   ],
 
-  /* The ONLY Bible verse in the card */
+  /* Scene 4 blessing verse (Scene 6 uses closing.verse) */
   verse: {
     ref: {
       en: "Numbers 6:24–26",
@@ -120,6 +120,45 @@ window.CONFIG = {
   },
 
   showJesusFigure: true,
+
+  /* Real details from the printed card (names kept in English script in both languages) */
+  families: {
+    groom: {
+      label: { en: "Elder son of", te: "పెద్ద కుమారుడు" },
+      parents: "Mr. Kamada Sanjeev Kumar (Late) & Mrs. Jayasree"
+    },
+    bride: {
+      label: { en: "Youngest daughter of", te: "చిన్న కుమార్తె" },
+      parents: "Mr. Yajjala Samuel Raju & Mrs. Mari Grace",
+      place: { en: "Mallayyapeta, Rajahmundry", te: "మల్లయ్యపేట, రాజమండ్రి" }
+    }
+  },
+  officiants: {
+    label: { en: "Solemnization of Marriage by", te: "వివాహ నిర్వహణ" },
+    list: [
+      "Rev. G. Rajan Babu (Saint Pauls Lutheran Church, Kovvur)",
+      "Bishop M. Mohan Rao (Christ's Care & Cure Ministries, Vizag)"
+    ]
+  },
+  invitedBy: {
+    label: { en: "Invited by", te: "ఆహ్వానించువారు" },
+    list: [
+      "Mr. Kamada Sanjeev Kumar (Late)", "Mrs. Jayasree", "Kamada Adarsh",
+      "Mr. N. Naresh Kumar", "Mrs. Geeta Bindu", "N. Surya Mivaan"
+    ]
+  },
+
+  /* Scene 6 closing: photo + the verse printed on the paper card */
+  closing: {
+    photo: "images/closing.jpg",
+    verse: {
+      ref: { en: "Psalm 118:23", te: "కీర్తనలు 118:23" },
+      text: {
+        en: "This is the LORD's doing; it is marvellous in our eyes.",
+        te: "ఇది యెహోవావలన కలిగినది, ఇది మన కన్నులకు ఆశ్చర్యము."
+      }
+    }
+  },
   musicSrc: "audio/music.mp3",
 
   /* files arrive later; a missing file must stay silent (no error) */
@@ -155,7 +194,7 @@ window.CONFIG = {
     scene5: {
       saveTheDate: { en: "SAVE THE DATE", te: "తేదీని గుర్తించుకోండి" },
       ceremonyLabel: { en: "HOLY MATRIMONY", te: "పరిశుద్ధ వివాహం" },
-      receptionLabel: { en: "RECEPTION", te: "విందు వేడుక" },
+      receptionLabel: { en: "LUNCH", te: "విందు భోజనం" },
       directions: { en: "Directions", te: "దారి చూపించు" },
       addToCalendar: { en: "Add to Calendar", te: "క్యాలెండర్‌కు జోడించు" },
       countdownTitle: { en: "COUNTING DOWN TO THE BIG DAY", te: "శుభ దినం కోసం లెక్క" },
@@ -176,8 +215,8 @@ window.CONFIG = {
       viewAgain: { en: "View again", te: "మళ్ళీ చూడండి" },
       share: { en: "Share", te: "పంచుకోండి" },
       shareText: {
-        en: "With joy, we invite you to the wedding of Ashish & Easter:",
-        te: "ఆనందంతో, ఆశీష్ & ఈస్టర్ వివాహానికి మిమ్మల్ని ఆహ్వానిస్తున్నాము:"
+        en: "With joy, we invite you to the wedding of Ashish & Sulochana:",
+        te: "ఆనందంతో, ఆశీష్ & సులోచన వివాహానికి మిమ్మల్ని ఆహ్వానిస్తున్నాము:"
       },
       stub: { en: "Scene 6 — coming soon", te: "సన్నివేశం 6 — త్వరలో వస్తోంది" }
     }
@@ -194,14 +233,14 @@ window.CONFIG = {
       kindChoose1: "KINDLY CHOOSE",
       kindChoose2: "YOUR LANGUAGE",
       sealAria: "Tap the seal to open the invitation",
-      monogramAria: "Monogram A and E"
+      monogramAria: "Monogram A and S"
     },
     en: {
       next: "Next",
       soundOnAria: "Mute sound",
       soundOffAria: "Unmute sound",
       togetherWith: "TOGETHER WITH THEIR FAMILIES",
-      sceneLabels: ["Invitation envelope", "Names", "Photo story", "Blessing", "Ceremony and reception", "Closing"],
+      sceneLabels: ["Invitation envelope", "Names", "Photo story", "Blessing", "Ceremony and lunch", "Closing"],
       amp: "&"
     },
     te: {
@@ -209,7 +248,7 @@ window.CONFIG = {
       soundOnAria: "ధ్వనిని మ్యూట్ చేయి",
       soundOffAria: "ధ్వనిని ఆన్ చేయి",
       togetherWith: "ఇరు కుటుంబాల సమ్మతితో",
-      sceneLabels: ["ఆహ్వాన కవరు", "వధూవరుల పేర్లు", "మా కథ", "ఆశీర్వాదం", "వివాహం మరియు విందు", "ముగింపు"],
+      sceneLabels: ["ఆహ్వాన కవరు", "వధూవరుల పేర్లు", "మా కథ", "ఆశీర్వాదం", "వివాహం మరియు విందు భోజనం", "ముగింపు"],
       amp: "&"
     }
   }
