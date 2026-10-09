@@ -434,7 +434,14 @@ body.lang-te .s3-caption { font-family: var(--telugu); font-style: normal; font-
   .s3-head { margin-bottom: 18px; }
 }
 
-/* Scene 4: The Blessing — morning light, threads, verse. */
+/* ===================== SCENE 4 CSS: START ===================== */
+@property --s4-reveal {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+/* Scene 4: The Blessing — morning light, finished art, threads, verse. */
 .s4-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .s4-glow {
   position: absolute;
@@ -483,6 +490,7 @@ body.lang-te .s3-caption { font-family: var(--telugu); font-style: normal; font-
 }
 .stage.is-paused .s4-ray, .stage.is-paused .s4-speck,
 .scene:not(.is-active) .s4-ray, .scene:not(.is-active) .s4-speck { animation-play-state: paused; }
+#scene-4:not(.is-active) .s4-halo-glow { animation-play-state: paused; }
 
 .s4-wrap {
   position: relative;
@@ -493,21 +501,115 @@ body.lang-te .s3-caption { font-family: var(--telugu); font-style: normal; font-
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px 20px calc(60px + env(safe-area-inset-bottom, 0px));
+  padding: 12px 20px calc(96px + env(safe-area-inset-bottom, 0px));
 }
-.s4-art { width: min(74vw, 300px); flex: none; }
-.s4-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.s4-svg path { fill: none; stroke: var(--rose); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.s4-couple path { stroke-width: 1.4; }
-.s4-halo { fill: #FFF6E9; stroke: none; filter: url(#s4-soft); opacity: .75; }
-.s4-hands path { filter: drop-shadow(0 0 5px rgba(231, 183, 163, .85)); }
-.s4-thread { stroke-width: 1.4; }
+
+/* The source artwork is 442 × 924.  Keep its natural ratio and the
+   requested full-illustration height; only the couple-only crop uses
+   half that visible height while the underlying PNG keeps this scale. */
+.s4-art {
+  position: relative;
+  flex: 0 0 auto;
+  width: auto;
+  height: min(62vh, calc(100vh - 300px));
+  height: min(62dvh, calc(100dvh - 300px));
+  aspect-ratio: 442 / 924;
+  margin: 0 auto;
+}
+.s4-art--couple-only {
+  height: min(31vh, calc(50vh - 150px));
+  height: min(31dvh, calc(50dvh - 150px));
+  aspect-ratio: 442 / 462;
+}
+.s4-art-viewport { position: absolute; inset: 0; overflow: hidden; }
+.s4-halo-glow {
+  position: absolute;
+  z-index: 0;
+  left: 60%;
+  top: 5%;
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 255, 250, .92) 0%,
+    rgba(255, 246, 222, .72) 23%,
+    rgba(231, 183, 163, .34) 48%,
+    rgba(217, 140, 153, 0) 74%);
+  opacity: .65;
+  transform: translate(-50%, -50%) scale(.96);
+  animation: s4-halo-breathe 4.4s var(--ease-soft) infinite;
+  pointer-events: none;
+}
+@keyframes s4-halo-breathe {
+  0%, 100% { opacity: .38; transform: translate(-50%, -50%) scale(.92); }
+  50% { opacity: .82; transform: translate(-50%, -50%) scale(1.12); }
+}
+.s4-art--couple-only .s4-halo-glow {
+  left: 50%;
+  top: 3%;
+  width: 48%;
+}
+.s4-image-reveal {
+  --s4-reveal: 100%;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 var(--s4-reveal), transparent calc(var(--s4-reveal) + 1.2%), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 var(--s4-reveal), transparent calc(var(--s4-reveal) + 1.2%), transparent 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.s4-illustration {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.s4-art--couple-only .s4-illustration {
+  inset: auto;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+}
+.s4-thread-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.s4-art--couple-only .s4-thread-overlay {
+  inset: auto;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+}
+.s4-thread-overlay path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.s4-thread { stroke-width: 1.35; opacity: .94; }
 .s4-th-1 { stroke: #B76E79; filter: drop-shadow(0 0 3px rgba(183, 110, 121, .85)); }
 .s4-th-2 { stroke: #FFFFFF; filter: drop-shadow(0 0 3px rgba(255, 255, 255, .9)); }
 .s4-th-3 { stroke: #D98C99; filter: drop-shadow(0 0 3px rgba(217, 140, 153, .9)); }
 .s4-knot { stroke: #B76E79; stroke-width: 1.7; filter: drop-shadow(0 0 4px rgba(183, 110, 121, .95)); }
 
-.s4-verse { max-width: 350px; margin-top: 10px; text-align: center; }
+.s4-verse { width: 100%; max-width: 350px; margin-top: 10px; text-align: center; }
 .s4-verse-line { margin: 0 0 10px; font: 500 16.5px/1.6 var(--serif); color: var(--burgundy); }
 body.lang-te .s4-verse-line { font-family: var(--telugu); font-size: 14.5px; line-height: 1.75; }
 .s4-ref {
@@ -521,23 +623,44 @@ body.lang-te .s4-verse-line { font-family: var(--telugu); font-size: 14.5px; lin
 }
 body.lang-te .s4-ref { font-family: var(--telugu); font-size: 12px; letter-spacing: .05em; padding-left: .05em; text-transform: none; }
 
-/* Animated path starts hidden; GSAP brings each layer in. */
+/* GSAP reveals the artwork with the mask; the verse still starts only
+   after the illustration sequence reaches its existing text cue. */
 #scene-4.is-animating .s4-glow, #scene-4.is-animating .s4-rays, #scene-4.is-animating .s4-dust,
-#scene-4.is-animating .s4-halo, #scene-4.is-animating .s4-figure,
 #scene-4.is-animating .s4-verse-line, #scene-4.is-animating .s4-ref { opacity: 0; }
 
-@media (max-height: 740px) {
-  .s4-art { width: min(56vw, 230px); }
-  .s4-verse-line { font-size: 15px; }
+@media (max-height: 820px) {
+  .s4-verse { margin-top: 8px; }
+  .s4-verse-line { font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .s4-ref { margin-top: 12px; }
+}
+@media (max-height: 680px) {
+  .s4-wrap { padding-top: 10px; }
+  .s4-verse { margin-top: 6px; }
+  .s4-verse-line { font-size: 14px; line-height: 1.45; margin-bottom: 7px; }
+  body.lang-te .s4-verse-line { font-size: 13px; line-height: 1.55; }
+  .s4-ref { margin-top: 10px; font-size: 10px; }
+  body.lang-te .s4-ref { font-size: 11px; }
+}
+@media (max-width: 400px) and (min-height: 681px) and (max-height: 900px) {
+  .s4-verse-line { font-size: 15px; line-height: 1.5; margin-bottom: 8px; }
+  .s4-verse { margin-top: 8px; }
+  .s4-ref { margin-top: 12px; }
+  body.lang-te .s4-verse-line { font-size: 13.5px; line-height: 1.55; margin-bottom: 8px; }
+  body.lang-te .s4-ref { font-size: 11px; }
+}
+@media (min-width: 700px) and (min-height: 681px) and (max-height: 820px) {
+  body.lang-te .s4-verse-line { font-size: 13.5px; line-height: 1.55; margin-bottom: 8px; }
+  body.lang-te .s4-ref { margin-top: 12px; font-size: 11px; }
 }
 @media (max-height: 620px) {
-  .s4-art { width: min(44vw, 190px); }
   .s4-verse { margin-top: 4px; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .s4-halo-glow { animation: none !important; opacity: .65; transform: translate(-50%, -50%); }
+}
+/* ====================== SCENE 4 CSS: END ====================== */
 
 @media (prefers-reduced-motion: reduce) {
   .scene, .next-btn { transition-duration: .01s !important; }
   .ambient-light, .ambient-leaves, .s2-church.has-entered .s2-ray { animation: none !important; }
-  .s4-ray, .s4-speck { animation: none !important; }
-  .s4-speck { opacity: .3 !important; }
 }

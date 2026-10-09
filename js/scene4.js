@@ -1,9 +1,9 @@
 /* ============================================================
    js/scene4.js — Scene 4 · The Blessing
-   Morning light warms the blush; a rose-gold line-art figure
-   (or blessing hands) pours three glowing threads around the
-   couple's joined hands, then the verse fades in line by line.
-   Copy & data: js/config.js (verse, showJesusFigure).
+   A finished transparent illustration is revealed top-to-bottom;
+   three glowing threads join at the couple's hands before the
+   verse fades in. Copy & data: js/config.js (verse,
+   showJesusFigure).
    ============================================================ */
 (function () {
   "use strict";
@@ -27,90 +27,35 @@
     { left: "68%", top: "24%", s: 2, dur: 16, del: 1,  op: .35 }
   ];
 
-  /* Elegant, respectful figure in fine rose-gold line-art: robe
-     outline, no facial detail, both hands raised in blessing. */
-  function figureGroup() {
-    return '<ellipse class="s4-halo" cx="195" cy="84" rx="27" ry="27"/>' +
-      '<g class="s4-figure">' +
-      '<path d="M180 86a15 15 0 1 0 30 0a15 15 0 1 0-30 0"/>' +
-      '<path d="M184 73q-7 15-2 30"/>' +
-      '<path d="M206 73q7 15 2 30"/>' +
-      '<path d="M179 110q16 9 32 0"/>' +
-      '<path d="M179 110c-10 13-19 42-25 76c-4 24-7 44-8 62q49 13 98 0c-1-18-4-38-8-62c-6-34-15-63-25-76"/>' +
-      '<path d="M195 121c-2 40-3 82-2 124"/>' +
-      '<path d="M168 164q27 11 54 0"/>' +
-      '<path d="M177 116c-15-3-27-11-35-24"/>' +
-      '<path d="M173 128c-13-3-23-11-29-22"/>' +
-      '<path d="M142 92q-2 7 1 14"/>' +
-      '<path d="M213 116c15-3 27-11 35-24"/>' +
-      '<path d="M217 128c13-3 23-11 29-22"/>' +
-      '<path d="M248 92q2 7-1 14"/>' +
-      '<path d="M136 90q6 5 12 1"/>' +
-      '<path d="M136 89l-7-12M141 90l-3-15M146 90l2-14"/>' +
-      '<path d="M254 90q-6 5-12 1"/>' +
-      '<path d="M254 89l7-12M249 90l3-15M244 90l-2-14"/>' +
-      '</g>';
-  }
-
-  /* Alternative: two glowing line-art blessing hands from above. */
-  function handsGroup() {
-    return '<ellipse class="s4-halo" cx="195" cy="34" rx="36" ry="26"/>' +
-      '<g class="s4-figure s4-hands">' +
-      '<path d="M138 -6c-2 14 0 28 8 40"/>' +
-      '<path d="M162 -6c2 12 0 24-6 36"/>' +
-      '<path d="M146 34q7 6 12 2"/>' +
-      '<path d="M146 36l-4 13M151 38l-1 14M156 36l3 13"/>' +
-      '<path d="M252 -6c2 14 0 28-8 40"/>' +
-      '<path d="M228 -6c-2 12 0 24 6 36"/>' +
-      '<path d="M244 34q-7 6-12 2"/>' +
-      '<path d="M244 36l4 13M239 38l1 14M234 36l-3 13"/>' +
-      '</g>';
-  }
-
-  /* Slim bride and groom facing each other, hands joined at (195, ~428). */
-  function coupleGroup() {
-    return '<g class="s4-couple">' +
-      '<path d="M147 375a11 11 0 1 0 22 0a11 11 0 1 0-22 0"/>' +
-      '<path d="M143 391q15-9 27 0"/>' +
-      '<path d="M144 392c-4 26-6 62-6 102"/>' +
-      '<path d="M169 393c3 16 4 30 3 44l0 57"/>' +
-      '<path d="M166 398c10 7 20 17 26 28"/>' +
-      '<path d="M221 375a11 11 0 1 0 22 0a11 11 0 1 0-22 0"/>' +
-      '<path d="M243 365q12 17 8 44"/>' +
-      '<path d="M218 391q14-9 27 0"/>' +
-      '<path d="M219 393c-4 26-10 62-17 101q30 10 61 0c-7-39-13-75-17-101"/>' +
-      '<path d="M224 398c-10 7-20 17-26 28"/>' +
-      '<path d="M190 424q5 7 10 0"/>' +
-      '<path d="M191 429q4 6 8 0"/>' +
-      '</g>';
-  }
-
-  /* Three fine threads from His hands (or the blessing hands) flowing
-     down to the joined hands, ending in a small knot. */
-  function threadGroup(withFigure) {
-    /* side threads bow wide around the robe, then drop through the open
-       gap between the couple's heads down to the joined hands */
-    var d1 = withFigure ? "M140 90C116 180 146 272 176 344C184 372 190 406 195 431"
-                        : "M146 44C120 160 148 268 176 344C184 372 190 406 195 431";
-    var d2 = withFigure ? "M195 170C199 250 190 350 194 418Q195 424 195 431"
-                        : "M195 26C199 150 190 350 194 418Q195 424 195 431";
-    var d3 = withFigure ? "M250 90C274 180 244 272 214 344C206 372 200 406 195 431"
-                        : "M244 44C270 160 242 268 214 344C206 372 200 406 195 431";
-    return '<g class="s4-threads">' +
-      '<path class="s4-thread s4-th-1" d="' + d1 + '"/>' +
-      '<path class="s4-thread s4-th-2" d="' + d2 + '"/>' +
-      '<path class="s4-thread s4-th-3" d="' + d3 + '"/>' +
-      '<path class="s4-knot" d="M188 430C188 425 194 424 195 430C196 436 202 436 202 430C202 424 196 424 195 430C194 436 188 435 188 430Z"/>' +
+  /* SVG uses the PNG's native 442 × 924 coordinate space.  The two
+     outer paths start at the supplied palm points; all three stay out
+     near the outer contours and converge only at the joined hands. */
+  function threadGroup(withJesus) {
+    var paths = withJesus ? [
+      "M146 83 C125 158 62 205 46 304 C27 421 44 515 111 556 C153 582 225 601 292 591",
+      "M151 86 C137 176 91 232 79 337 C66 450 88 521 139 559 C180 590 240 601 292 591",
+      "M411 83 C431 170 432 247 421 346 C410 454 384 520 347 555 C325 576 308 587 292 591"
+    ] : [
+      "M218 462 C160 467 48 480 24 526 C0 571 37 601 88 617 C137 633 228 610 292 591",
+      "M221 462 C285 470 402 478 426 523 C450 569 404 600 354 619 C328 627 308 606 292 591",
+      "M224 462 C183 480 100 506 71 548 C42 590 83 613 127 624 C174 637 248 608 292 591"
+    ];
+    var strokes = paths.map(function (d, i) {
+      return '<path class="s4-thread s4-th-' + (i + 1) + '" d="' + d + '"/>';
+    }).join("");
+    return '<g class="s4-threads">' + strokes +
+      '<path class="s4-knot" d="M286 591 C286 586 291 584 292 591 C293 598 298 596 298 591 C298 586 293 584 292 591 C291 597 286 596 286 591Z"/>' +
       '</g>';
   }
 
   function render(root) {
-    var withFigure = !!C.showJesusFigure;
+    var withJesus = !!C.showJesusFigure;
     var specks = SPECKS.map(function (s) {
       return '<span class="s4-speck" style="left:' + s.left + ";top:" + s.top +
         ";width:" + s.s + "px;height:" + s.s + "px;--dur:" + s.dur +
         "s;--del:-" + s.del + "s;--op:" + s.op + '"></span>';
     }).join("");
+
     root.innerHTML =
       '<div class="s4-sky" aria-hidden="true">' +
         '<div class="s4-glow"></div>' +
@@ -124,16 +69,16 @@
         '<div class="s4-dust">' + specks + '</div>' +
       '</div>' +
       '<div class="s4-wrap">' +
-        '<div class="s4-art" aria-hidden="true">' +
-          '<svg class="s4-svg" viewBox="0 0 390 560" focusable="false">' +
-            '<defs><filter id="s4-soft" x="-60%" y="-60%" width="220%" height="220%">' +
-            '<feGaussianBlur stdDeviation="4"/></filter></defs>' +
-            /* side threads bow wide, then drop through the open gap
-               between the couple's heads down to the joined hands */
-            (withFigure ? figureGroup() : handsGroup()) +
-            threadGroup(withFigure) +
-            coupleGroup() +
-          '</svg>' +
+        '<div class="s4-art' + (withJesus ? '' : ' s4-art--couple-only') + '" aria-hidden="true">' +
+          '<div class="s4-art-viewport">' +
+            '<span class="s4-halo-glow"></span>' +
+            '<div class="s4-image-reveal">' +
+              '<img class="s4-illustration" src="images/blessing.png" alt="" draggable="false" decoding="async"/>' +
+            '</div>' +
+            '<svg class="s4-thread-overlay" viewBox="0 0 442 924" preserveAspectRatio="none" focusable="false">' +
+              threadGroup(withJesus) +
+            '</svg>' +
+          '</div>' +
         '</div>' +
         '<div class="s4-verse"></div>' +
       '</div>';
@@ -173,17 +118,16 @@
   }
 
   function prepStrokes(root) {
-    var els = root.querySelectorAll(".s4-couple path, .s4-thread, .s4-knot");
+    var els = root.querySelectorAll(".s4-thread, .s4-knot");
     Array.prototype.forEach.call(els, function (el) {
       var length = 320;
       try { length = el.getTotalLength(); } catch (e) {}
       el.style.strokeDasharray = length + " " + length;
       el.style.strokeDashoffset = String(length);
     });
-    return els;
   }
   function clearStrokes(root) {
-    var els = root.querySelectorAll(".s4-couple path, .s4-thread, .s4-knot");
+    var els = root.querySelectorAll(".s4-thread, .s4-knot");
     Array.prototype.forEach.call(els, function (el) {
       el.style.strokeDasharray = "none";
       el.style.strokeDashoffset = "0";
@@ -194,9 +138,11 @@
     root.classList.remove("is-animating");
     if (window.gsap) {
       window.gsap.set(root.querySelectorAll(
-        ".s4-glow, .s4-rays, .s4-dust, .s4-halo, .s4-figure, .s4-verse-line, .s4-ref"),
+        ".s4-glow, .s4-rays, .s4-dust, .s4-verse-line, .s4-ref"),
         { clearProps: "all" });
     }
+    var reveal = root.querySelector(".s4-image-reveal");
+    if (reveal) { reveal.style.setProperty("--s4-reveal", "100%"); }
     clearStrokes(root);
   }
 
@@ -205,36 +151,47 @@
     App.markSceneReady(4);
   }
 
-  /* Slow, calm, reverent — no bounce anywhere. Total ≈ 9 s. */
+  /* Slow, calm, reverent — ≈ 9 s through the reference and release. */
   function buildTimeline(root) {
     var g = window.gsap;
+    var reveal = root.querySelector(".s4-image-reveal");
+    var withJesus = !!C.showJesusFigure;
     tl = g.timeline({ defaults: { ease: "sine.inOut" } });
 
-    /* morning light warms the blush */
+    /* Warm light, rays, and drifting dust keep their original timing. */
     tl.fromTo(root.querySelector(".s4-glow"), { opacity: 0 }, { opacity: 1, duration: 2.6 }, 0);
     tl.fromTo(root.querySelector(".s4-rays"), { opacity: 0 }, { opacity: 1, duration: 2.2 }, .2);
     tl.fromTo(root.querySelector(".s4-dust"), { opacity: 0 }, { opacity: 1, duration: 2.4 }, .4);
 
-    /* the figure rises gently into the light (or the hands appear) */
-    tl.fromTo(root.querySelector(".s4-halo"), { opacity: 0 }, { opacity: .75, duration: 2.4 }, .7);
-    tl.fromTo(root.querySelector(".s4-figure"), { opacity: 0, y: 34 },
-      { opacity: 1, y: 0, duration: 2.6, ease: "power1.out" }, .5);
+    /* Reveal Jesus first, then the couple.  The CSS mask's soft edge
+       follows this stop in the same 0–100% image coordinate space. */
+    g.set(reveal, { "--s4-reveal": "0%" });
+    if (withJesus) {
+      tl.to(reveal, { "--s4-reveal": "50%", duration: 2.5, ease: "sine.inOut" }, 0);
+      tl.to(reveal, { "--s4-reveal": "100%", duration: 2, ease: "sine.inOut" }, 2.5);
+    } else {
+      /* In couple-only mode, the cropped lower half reveals top-to-bottom. */
+      tl.to(reveal, { "--s4-reveal": "100%", duration: 2.5, ease: "sine.inOut" }, 0);
+    }
 
-    /* the couple is drawn in fine line-art */
-    var couple = root.querySelectorAll(".s4-couple path");
+    /* Three fine threads travel from the palms (or top-centre light)
+       toward the joined hands; the knot finishes at about 6.5 s. */
     prepStrokes(root);
-    tl.to(couple, { strokeDashoffset: 0, duration: 2, ease: "power1.inOut", stagger: .06 }, 1.9);
-
-    /* three glowing threads flow down and wrap the joined hands */
     var threads = root.querySelectorAll(".s4-thread");
-    Array.prototype.forEach.call(threads, function (el, i) {
-      tl.to(el, { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" }, 3.7 + i * .4);
-    });
-    /* …and tie into a small knot */
-    tl.to(root.querySelector(".s4-knot"), { strokeDashoffset: 0, duration: .9, ease: "power1.inOut" }, 5.9);
+    tl.to(threads, {
+      strokeDashoffset: 0,
+      duration: 1.55,
+      ease: "power1.inOut",
+      stagger: .16
+    }, 4.5);
+    tl.to(root.querySelector(".s4-knot"), {
+      strokeDashoffset: 0,
+      duration: .4,
+      ease: "power1.inOut"
+    }, 6.1);
     tl.call(function () { clearStrokes(root); }, null, 7);
 
-    /* the verse fades in line by line, then the embossed reference */
+    /* The verse, reference, and Next release retain their original times. */
     var lines = root.querySelectorAll(".s4-verse-line");
     Array.prototype.forEach.call(lines, function (el, i) {
       tl.fromTo(el, { opacity: 0, y: 12 },
