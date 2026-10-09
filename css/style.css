@@ -338,7 +338,206 @@ body.lang-te .next-btn-label { font-family: var(--telugu); letter-spacing: .12em
 .sound-btn.is-muted .ic-wave { display: none; }
 .sound-btn.is-muted .ic-off { display: block; }
 
+/* Scene 3: "Our Story" — stacked photo prints in blush & rose gold. */
+.s3-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 0 calc(64px + env(safe-area-inset-bottom, 0px));
+}
+.s3-head { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 26px; }
+.s3-title {
+  margin: 0;
+  font: 600 15px var(--serif);
+  letter-spacing: .34em;
+  padding-left: .34em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  text-align: center;
+}
+body.lang-te .s3-title { font-family: var(--telugu); font-size: 16px; letter-spacing: .06em; padding-left: .06em; text-transform: none; }
+.s3-rule { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--rose), transparent); transform-origin: center; }
+.s3-stage { width: 100%; display: flex; justify-content: center; }
+.s3-stack {
+  --s3-w: min(78vw, 330px);
+  position: relative;
+  width: var(--s3-w);
+  height: calc(var(--s3-w) * 1.25 + 96px);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: grab;
+}
+.s3-stack:active { cursor: grabbing; }
+.s3-card { position: absolute; inset: 0; margin: 0; will-change: transform; }
+.s3-frame {
+  background: var(--paper);
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 22px 44px -20px rgba(109, 31, 58, .3), 0 6px 16px rgba(109, 31, 58, .1);
+}
+.s3-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(183, 110, 121, .55);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 38%, var(--white), var(--fold));
+}
+@supports not (aspect-ratio: 4 / 5) {
+  .s3-photo { height: calc(var(--s3-w) * 1.25 - 25px); }
+}
+.s3-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  transition: opacity .6s var(--ease-soft);
+}
+.s3-photo img.is-missing { opacity: 0; }
+.s3-ph { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); color: var(--rose-light); opacity: .5; }
+.s3-caption {
+  margin: 12px 4px 0;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: italic 500 15px/1.45 var(--serif);
+  color: var(--burgundy);
+  text-align: center;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  transition: opacity .5s var(--ease-soft);
+}
+body.lang-te .s3-caption { font-family: var(--telugu); font-style: normal; font-size: 14px; }
+.s3-card.is-top .s3-caption { opacity: 1; }
+.s3-dots { display: flex; gap: 10px; margin-top: 22px; }
+.s3-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rose);
+  opacity: .3;
+  transition: opacity .45s var(--ease-soft), transform .45s var(--ease-soft), box-shadow .45s var(--ease-soft);
+}
+.s3-dot.is-on { opacity: 1; transform: scale(1.25); box-shadow: 0 0 6px rgba(183, 110, 121, .6); }
+@media (max-height: 660px) {
+  .s3-stack { --s3-w: min(58vw, 250px); }
+  .s3-head { margin-bottom: 18px; }
+}
+
+/* Scene 4: The Blessing — morning light, threads, verse. */
+.s4-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.s4-glow {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: -18%;
+  height: 92%;
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 0%, rgba(255, 250, 240, .95), rgba(255, 236, 214, .4) 48%, transparent 74%),
+    linear-gradient(180deg, rgba(255, 233, 209, .5), rgba(255, 233, 209, 0) 68%);
+}
+.s4-rays { position: absolute; inset: 0; }
+.s4-ray {
+  position: absolute;
+  top: -12%;
+  left: 50%;
+  width: 11%;
+  height: 78%;
+  --rot: 0deg;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 82%);
+  clip-path: polygon(44% 0, 56% 0, 78% 100%, 22% 100%);
+  transform-origin: 50% 0;
+  transform: translateX(-50%) rotate(var(--rot));
+  animation: s4-ray-sway 26s var(--ease-soft) infinite alternate;
+}
+@keyframes s4-ray-sway {
+  from { transform: translateX(-50%) rotate(calc(var(--rot) - 3deg)); }
+  to { transform: translateX(-50%) rotate(calc(var(--rot) + 3deg)); }
+}
+.s4-dust { position: absolute; inset: 0; }
+.s4-speck {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 0 6px rgba(255, 244, 230, .9);
+  opacity: 0;
+  animation: s4-dust-drift var(--dur, 13s) linear infinite;
+  animation-delay: var(--del, 0s);
+}
+@keyframes s4-dust-drift {
+  0% { transform: translate3d(0, -16px, 0); opacity: 0; }
+  15% { opacity: var(--op, .4); }
+  50% { transform: translate3d(6px, 26px, 0); }
+  85% { opacity: var(--op, .4); }
+  100% { transform: translate3d(-4px, 66px, 0); opacity: 0; }
+}
+.stage.is-paused .s4-ray, .stage.is-paused .s4-speck,
+.scene:not(.is-active) .s4-ray, .scene:not(.is-active) .s4-speck { animation-play-state: paused; }
+
+.s4-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px calc(60px + env(safe-area-inset-bottom, 0px));
+}
+.s4-art { width: min(74vw, 300px); flex: none; }
+.s4-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.s4-svg path { fill: none; stroke: var(--rose); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.s4-couple path { stroke-width: 1.4; }
+.s4-halo { fill: #FFF6E9; stroke: none; filter: url(#s4-soft); opacity: .75; }
+.s4-hands path { filter: drop-shadow(0 0 5px rgba(231, 183, 163, .85)); }
+.s4-thread { stroke-width: 1.4; }
+.s4-th-1 { stroke: #B76E79; filter: drop-shadow(0 0 3px rgba(183, 110, 121, .85)); }
+.s4-th-2 { stroke: #FFFFFF; filter: drop-shadow(0 0 3px rgba(255, 255, 255, .9)); }
+.s4-th-3 { stroke: #D98C99; filter: drop-shadow(0 0 3px rgba(217, 140, 153, .9)); }
+.s4-knot { stroke: #B76E79; stroke-width: 1.7; filter: drop-shadow(0 0 4px rgba(183, 110, 121, .95)); }
+
+.s4-verse { max-width: 350px; margin-top: 10px; text-align: center; }
+.s4-verse-line { margin: 0 0 10px; font: 500 16.5px/1.6 var(--serif); color: var(--burgundy); }
+body.lang-te .s4-verse-line { font-family: var(--telugu); font-size: 14.5px; line-height: 1.75; }
+.s4-ref {
+  margin: 16px 0 0;
+  font: 11px var(--serif);
+  letter-spacing: .3em;
+  padding-left: .3em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  text-shadow: var(--emboss);
+}
+body.lang-te .s4-ref { font-family: var(--telugu); font-size: 12px; letter-spacing: .05em; padding-left: .05em; text-transform: none; }
+
+/* Animated path starts hidden; GSAP brings each layer in. */
+#scene-4.is-animating .s4-glow, #scene-4.is-animating .s4-rays, #scene-4.is-animating .s4-dust,
+#scene-4.is-animating .s4-halo, #scene-4.is-animating .s4-figure,
+#scene-4.is-animating .s4-verse-line, #scene-4.is-animating .s4-ref { opacity: 0; }
+
+@media (max-height: 740px) {
+  .s4-art { width: min(56vw, 230px); }
+  .s4-verse-line { font-size: 15px; }
+}
+@media (max-height: 620px) {
+  .s4-art { width: min(44vw, 190px); }
+  .s4-verse { margin-top: 4px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scene, .next-btn { transition-duration: .01s !important; }
   .ambient-light, .ambient-leaves, .s2-church.has-entered .s2-ray { animation: none !important; }
+  .s4-ray, .s4-speck { animation: none !important; }
+  .s4-speck { opacity: .3 !important; }
 }
