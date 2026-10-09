@@ -187,6 +187,8 @@ window.CONFIG = {
   ui: {
     shared: {
       invited: "YOU ARE INVITED",
+      openEnglish: "Open in English",
+      openTelugu: "తెలుగులో తెరవండి",
       tapSeal: "Tap the seal to open",
       tapSealTe: "తెరవడానికి ముద్రను తాకండి",
       kindChoose1: "KINDLY CHOOSE",
@@ -199,6 +201,7 @@ window.CONFIG = {
       soundOnAria: "Mute sound",
       soundOffAria: "Unmute sound",
       togetherWith: "TOGETHER WITH THEIR FAMILIES",
+      sceneLabels: ["Invitation envelope", "Names", "Photo story", "Blessing", "Ceremony and reception", "Closing"],
       amp: "&"
     },
     te: {
@@ -206,6 +209,7 @@ window.CONFIG = {
       soundOnAria: "ధ్వనిని మ్యూట్ చేయి",
       soundOffAria: "ధ్వనిని ఆన్ చేయి",
       togetherWith: "ఇరు కుటుంబాల సమ్మతితో",
+      sceneLabels: ["ఆహ్వాన కవరు", "వధూవరుల పేర్లు", "మా కథ", "ఆశీర్వాదం", "వివాహం మరియు విందు", "ముగింపు"],
       amp: "&"
     }
   }
