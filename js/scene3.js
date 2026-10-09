@@ -87,6 +87,13 @@
       if (!img || !photos[i]) { return; }
       img.addEventListener("error", function () { img.classList.add("is-missing"); });
       img.src = photos[i].src;
+      /* living photo: glow behind the print, light sweep, petals, gentle tilt */
+      if (window.LivingPhoto) {
+        window.LivingPhoto.mount(card.querySelector(".s3-frame"), {
+          src: photos[i].src,
+          photo: card.querySelector(".s3-photo")
+        });
+      }
     });
   }
 
