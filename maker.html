@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3D9DC">
+<meta name="robots" content="noindex">
+<title>Invitation Sender — Ashish &amp; Sulochana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Great+Vibes&amp;family=Noto+Sans+Telugu:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #F3D9DC; --paper: #FBEFF0; --fold: #E8BFC5; --rose: #B76E79;
+  --burgundy: #6D1F3A; --wine: #4A1228; --green: #1F7A4D;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --telugu: 'Noto Sans Telugu', sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, var(--paper), var(--blush) 70%) fixed;
+  color: var(--burgundy);
+  font: 500 17px/1.45 var(--serif);
+  padding: 20px 16px 120px;
+}
+.wrap { max-width: 520px; margin: 0 auto; }
+header { text-align: center; margin: 6px 0 18px; }
+.seal {
+  width: 64px; height: 64px; margin: 0 auto 10px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 34% 30%, #8a2a44, var(--wine) 58%, #330b1b);
+  color: #E7B7A3; font: italic 600 18px var(--serif);
+  box-shadow: 0 5px 12px rgba(74,18,40,.3), inset 0 -3px 6px rgba(0,0,0,.3);
+}
+h1 { margin: 0; font: 400 40px/1.1 'Great Vibes', cursive; color: var(--rose); }
+.sub { margin: 6px 0 0; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; }
+.card {
+  background: var(--paper); border: 1px solid rgba(183,110,121,.55);
+  border-radius: 6px; padding: 16px; margin-bottom: 14px;
+  box-shadow: 0 6px 18px rgba(74,18,40,.08);
+}
+.steps { margin: 0; padding-left: 20px; font-size: 16px; }
+.steps li { margin: 3px 0; }
+label.big { display: block; font-weight: 600; margin-bottom: 6px; }
+textarea {
+  width: 100%; min-height: 150px; padding: 12px; resize: vertical;
+  border: 1px solid var(--rose); border-radius: 4px; background: #fff;
+  font: 17px/1.5 var(--serif); color: var(--burgundy);
+}
+textarea:focus, input:focus { outline: 2px solid var(--rose); outline-offset: 1px; }
+.hint { font-size: 14px; opacity: .8; margin: 6px 0 0; }
+.lang-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.lang-row label {
+  flex: 1 1 140px; display: flex; align-items: center; gap: 8px; justify-content: center;
+  padding: 10px; min-height: 48px; border: 1px solid var(--rose); border-radius: 4px; background: #fff; cursor: pointer;
+}
+.lang-row input { accent-color: var(--burgundy); width: 18px; height: 18px; }
+.te { font-family: var(--telugu); }
+button, .btn {
+  font: 600 16px var(--serif); letter-spacing: .04em; cursor: pointer; border-radius: 4px;
+  min-height: 48px; padding: 10px 16px; border: 1px solid var(--burgundy);
+}
+.primary { width: 100%; margin-top: 14px; background: var(--burgundy); color: #fff; font-size: 18px; }
+.list { display: flex; flex-direction: column; gap: 10px; }
+.row {
+  display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+  background: #fff; border: 1px solid rgba(183,110,121,.45); border-radius: 6px; padding: 10px 12px;
+}
+.row.sent { background: #EFF8F2; border-color: rgba(31,122,77,.45); }
+.who { font-weight: 600; font-size: 18px; overflow-wrap: anywhere; }
+.meta { font-size: 13px; opacity: .75; }
+.actions { display: flex; gap: 6px; }
+.send { background: var(--green); border-color: var(--green); color: #fff; text-decoration: none; display: inline-flex; align-items: center; }
+.row.sent .send { background: #fff; color: var(--green); }
+.copy { background: #fff; color: var(--burgundy); padding: 10px 12px; }
+.lang-toggle { background: #fff; color: var(--burgundy); padding: 4px 8px; min-height: 30px; font-size: 13px; margin-top: 4px; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 4px 0 10px; flex-wrap: wrap; }
+.count { font-weight: 600; }
+.ghost { background: transparent; color: var(--burgundy); border-color: rgba(109,31,58,.4); min-height: 40px; font-size: 14px; }
+.empty { text-align: center; opacity: .7; padding: 14px; }
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+  background: var(--burgundy); color: #fff; padding: 10px 18px; border-radius: 30px;
+  opacity: 0; transition: .3s; pointer-events: none; font-size: 15px;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="seal">A&amp;S</div>
+    <h1>Ashish &amp; Sulochana</h1>
+    <p class="sub">Invitation sender</p>
+  </header>
+
+  <section class="card">
+    <ol class="steps">
+      <li>Type the names, <b>one name per line</b>.</li>
+      <li>Choose <b>English</b> or <b class="te">తెలుగు</b>.</li>
+      <li>Tap <b>Make invitations</b>.</li>
+      <li>Tap <b>Send</b> next to each name, pick the person in WhatsApp, and press send.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <label class="big" for="names">Names (one per line)</label>
+    <textarea id="names" placeholder="Mary Aunty&#10;Ravi Garu&#10;Suresh Uncle &amp; Family"></textarea>
+    <p class="hint">Write the name exactly as it should appear: "Dear Mary Aunty".</p>
+    <div class="lang-row" role="radiogroup" aria-label="Language">
+      <label><input type="radio" name="lang" value="en" checked> English</label>
+      <label class="te"><input type="radio" name="lang" value="te"> తెలుగు</label>
+    </div>
+    <button class="primary" id="make" type="button">Make invitations</button>
+  </section>
+
+  <section class="card" id="listCard">
+    <div class="toolbar">
+      <span class="count" id="count">No invitations yet</span>
+      <button class="ghost" id="clear" type="button">Clear list</button>
+    </div>
+    <div class="list" id="list"><p class="empty">Your invitations will appear here.</p></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+  var CARD = "https://pavanrockskrishna1-dev.github.io/wedding-card-v2/";
+  var KEY = "as-invite-list-v1";
+  var MSG = {
+    en: function (name, link) {
+      return "Dear " + name + ",\n\nWith joy in our hearts, we invite you to the wedding of\nAshish & Sulochana\nThursday · 19 November 2026 · Saint Pauls Lutheran Church, Kovvur\n\nTap to open your invitation 💌\n" + link;
+    },
+    te: function (name, link) {
+      return "ప్రియమైన " + name + ",\n\nఆశీష్ & సులోచన వివాహానికి మిమ్మల్ని సాదరంగా ఆహ్వానిస్తున్నాము.\nగురువారం · 19 నవంబర్ 2026 · సెయింట్ పాల్స్ లూథరన్ చర్చి, కొవ్వూరు\n\nమీ ఆహ్వానాన్ని తెరవడానికి నొక్కండి 💌\n" + link;
+    }
+  };
+  var items = [];
+
+  function load() { try { items = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { items = []; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (e) {} }
+  function linkFor(it) { return CARD + "?name=" + encodeURIComponent(it.name) + (it.lang === "te" ? "&lang=te" : ""); }
+  function messageFor(it) { return MSG[it.lang](it.name, linkFor(it)); }
+  function toast(t) {
+    var el = document.getElementById("toast"); el.textContent = t; el.classList.add("show");
+    clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove("show"); }, 1800);
+  }
+
+  function render() {
+    var list = document.getElementById("list");
+    var sent = items.filter(function (i) { return i.sent; }).length;
+    document.getElementById("count").textContent = items.length
+      ? sent + " of " + items.length + " sent" : "No invitations yet";
+    if (!items.length) { list.innerHTML = '<p class="empty">Your invitations will appear here.</p>'; return; }
+    list.innerHTML = "";
+    items.forEach(function (it, i) {
+      var row = document.createElement("div");
+      row.className = "row" + (it.sent ? " sent" : "");
+      var left = document.createElement("div");
+      var who = document.createElement("div"); who.className = "who" + (it.lang === "te" ? " te" : "");
+      who.textContent = (it.sent ? "✓ " : "") + it.name;
+      var meta = document.createElement("div"); meta.className = "meta";
+      meta.textContent = it.lang === "te" ? "Telugu" : "English";
+      var lt = document.createElement("button"); lt.type = "button"; lt.className = "lang-toggle";
+      lt.textContent = it.lang === "te" ? "Switch to English" : "Switch to Telugu";
+      lt.addEventListener("click", function () { it.lang = it.lang === "te" ? "en" : "te"; save(); render(); });
+      left.appendChild(who); left.appendChild(meta); left.appendChild(lt);
+      var act = document.createElement("div"); act.className = "actions";
+      var copy = document.createElement("button"); copy.type = "button"; copy.className = "copy"; copy.textContent = "Copy";
+      copy.setAttribute("aria-label", "Copy message for " + it.name);
+      copy.addEventListener("click", function () {
+        var text = messageFor(it);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { toast("Message copied"); }, function () { prompt("Copy this message:", text); });
+        } else { prompt("Copy this message:", text); }
+      });
+      var send = document.createElement("a"); send.className = "btn send";
+      send.href = "https://wa.me/?text=" + encodeURIComponent(messageFor(it));
+      send.target = "_blank"; send.rel = "noopener";
+      send.textContent = it.sent ? "Send again" : "Send";
+      send.setAttribute("aria-label", "Send invitation to " + it.name + " on WhatsApp");
+      send.addEventListener("click", function () { it.sent = true; save(); setTimeout(render, 300); });
+      act.appendChild(copy); act.appendChild(send);
+      row.appendChild(left); row.appendChild(act);
+      list.appendChild(row);
+    });
+  }
+
+  document.getElementById("make").addEventListener("click", function () {
+    var ta = document.getElementById("names");
+    var lang = document.querySelector('input[name="lang"]:checked').value;
+    var names = ta.value.split(/\n+/).map(function (s) { return s.replace(/\s+/g, " ").trim(); }).filter(Boolean);
+    if (!names.length) { toast("Type at least one name"); ta.focus(); return; }
+    var added = 0;
+    names.forEach(function (n) {
+      var exists = items.some(function (i) { return i.name.toLowerCase() === n.toLowerCase() && i.lang === lang; });
+      if (!exists) { items.push({ name: n, lang: lang, sent: false }); added++; }
+    });
+    save(); render(); ta.value = "";
+    toast(added + " invitation" + (added === 1 ? "" : "s") + " ready");
+    document.getElementById("listCard").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  document.getElementById("clear").addEventListener("click", function () {
+    if (!items.length) { return; }
+    if (confirm("Clear the whole list?")) { items = []; save(); render(); }
+  });
+
+  load(); render();
+})();
+</script>
+</body>
+</html>
