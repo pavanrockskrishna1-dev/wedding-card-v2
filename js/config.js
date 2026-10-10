@@ -162,24 +162,8 @@ window.CONFIG = {
   musicSrc: "audio/music.mp3",
 
   /* files arrive later; a missing file must stay silent (no error) */
-  narration: {
-    en: {
-      scene1: "audio/en/scene1.mp3",
-      scene2: "audio/en/scene2.mp3",
-      scene3: "audio/en/scene3.mp3",
-      scene4: "audio/en/scene4.mp3",
-      scene5: "audio/en/scene5.mp3",
-      scene6: "audio/en/scene6.mp3"
-    },
-    te: {
-      scene1: "audio/te/scene1.mp3",
-      scene2: "audio/te/scene2.mp3",
-      scene3: "audio/te/scene3.mp3",
-      scene4: "audio/te/scene4.mp3",
-      scene5: "audio/te/scene5.mp3",
-      scene6: "audio/te/scene6.mp3"
-    }
-  },
+  /* voice narration intentionally not used */
+  narration: { en: {}, te: {} },
 
   /* per-scene data used by scenes 3–6 (built in later rounds) */
   scenes: {

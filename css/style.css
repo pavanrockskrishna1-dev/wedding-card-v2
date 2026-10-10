@@ -874,3 +874,23 @@ body.lang-te .s6-action { font: 500 12px/1.5 var(--telugu); letter-spacing: 0; t
   .s5-directions, .s5-calendar-btn, .s6-action { transition: none; }
 }
 /* ===================== SCENE 5–6 CSS: END ===================== */
+
+/* ==================== FINAL POLISH: START ==================== */
+/* Loading screen: blush with a softly pulsing wax seal */
+.loader { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at 50% 45%, var(--paper), var(--blush) 70%); transition: opacity .8s var(--ease-soft), visibility 0s linear .8s; }
+.loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-seal { width: 84px; height: 84px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 34% 30%, #8a2a44 0%, var(--wine) 58%, #330b1b 100%); box-shadow: 0 6px 16px rgba(74, 18, 40, .3), inset 0 -3px 6px rgba(0, 0, 0, .3); animation: loader-pulse 1.6s var(--ease-soft) infinite; }
+.loader-seal span { font: italic 600 22px var(--serif); color: #E7B7A3; letter-spacing: .02em; border: 1.5px solid rgba(231, 183, 163, .45); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
+@keyframes loader-pulse { 0%, 100% { transform: scale(.94); box-shadow: 0 6px 16px rgba(74, 18, 40, .3), 0 0 0 0 rgba(183, 110, 121, .35); } 50% { transform: scale(1); box-shadow: 0 6px 16px rgba(74, 18, 40, .3), 0 0 0 16px rgba(183, 110, 121, 0); } }
+
+/* Light bloom between scenes */
+.bloom { position: absolute; inset: 0; z-index: 25; pointer-events: none; opacity: 0; background: radial-gradient(ellipse 70% 55% at 50% 45%, rgba(255, 255, 255, .95), rgba(255, 244, 236, .55) 45%, rgba(251, 239, 240, 0) 75%); }
+.bloom.is-blooming { animation: scene-bloom 1.25s var(--ease-soft); }
+@keyframes scene-bloom { 0% { opacity: 0; transform: scale(.85); } 35% { opacity: .85; transform: scale(1); } 100% { opacity: 0; transform: scale(1.15); } }
+
+/* Next stays readable when content scrolls under it */
+.next-btn { background: radial-gradient(closest-side, rgba(243, 217, 220, .96), rgba(243, 217, 220, .75) 60%, rgba(243, 217, 220, 0)); padding: 14px 34px; }
+#scene-5 .s5-content, #scene-6 .s6-content { padding-bottom: calc(130px + env(safe-area-inset-bottom, 0px)); }
+
+@media (prefers-reduced-motion: reduce) { .loader-seal { animation: none; } .bloom { display: none; } }
+/* ===================== FINAL POLISH: END ===================== */

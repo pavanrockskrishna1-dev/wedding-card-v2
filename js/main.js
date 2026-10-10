@@ -127,6 +127,13 @@
     waitingForMain = false;
     if (to.root) {
       to.root.classList.add("is-active");
+      /* soft light bloom between scenes (not on the envelope) */
+      var bloom = document.getElementById("bloom");
+      if (bloom && n >= 2 && !App.reduced) {
+        bloom.classList.remove("is-blooming");
+        void bloom.offsetWidth;
+        bloom.classList.add("is-blooming");
+      }
       to.root.setAttribute("aria-hidden", "false");
       to.root.inert = false;
       if (focus) { try { to.root.focus({ preventScroll: true }); } catch (e) {} }
